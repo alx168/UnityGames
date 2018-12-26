@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ball
   - Paddle
+  - Goal
+  - Goal2
   layers:
   - Default
   - TransparentFX
