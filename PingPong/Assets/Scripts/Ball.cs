@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-	private Rigidbody2D rg2d;
+    public GameObject paddle;
+    private Rigidbody2D rg2d;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +21,10 @@ public class Ball : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+	if (collision.gameObject.tag == "Player")
         {
-           	Vector2 vel = new Vector2(5f, 0f);
-        	rg2d.velocity = vel;
-
-
-        }
+        	float calculation =  (this.transform.position.y - paddle.transform.position.y) / 2f;	
+		rg2d.velocity = new Vector2(1f, calculation) * 7 + paddle.GetComponent<Rigidbody2D>().velocity;
+	}
     }
 }
